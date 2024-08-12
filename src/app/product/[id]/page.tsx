@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import Image from "next/image";
 import useStore from "../../../store/store";
 import axios from "axios";
 
@@ -54,7 +55,7 @@ const ProductDetail: React.FC = () => {
 	return (
 		<div className="product-detail">
 			<h1>{product.title}</h1>
-			<img src={product.image} alt={product.title} />
+			<Image src={product.image} alt={product.title} width={500} height={500} />
 			<p>{product.description}</p>
 			<p>Price: ${product.price.toFixed(2)}</p>
 			<button onClick={() => useStore.getState().addToCart()}>

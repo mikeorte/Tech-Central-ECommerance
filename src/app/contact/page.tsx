@@ -14,7 +14,7 @@ const Contact = () => {
 				<h2>Get in Touch</h2>
 				<p>
 					Whether you need help with a product, have a question about your
-					order, or just want to share your thoughts, we're here to listen.
+					order, or just want to share your thoughts, we are here to listen.
 				</p>
 				<p>
 					<strong>Email:</strong>{" "}

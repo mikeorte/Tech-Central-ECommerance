@@ -58,8 +58,8 @@ export default function Home() {
 				<h2>About Tech-Central</h2>
 				<p>
 					At Tech-Central, we bring you the cutting-edge technology products
-					that shape the future. Whether you're looking for the latest
-					smartphones, headphones, or smart home devices, we've got you covered.
+					that shape the future. Whether you are looking for the latest
+					smartphones, headphones, or smart home devices, we have got you covered.
 				</p>
 				<Link href="/about">Learn More About Us</Link>
 			</section>

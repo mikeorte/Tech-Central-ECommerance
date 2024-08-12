@@ -1,7 +1,10 @@
+"use client";
 import React from "react";
 import "../../styles/components.css";
+import useStore from "../../store/store";
 
-const Header: React.FC = () => {
+const Header = () => {
+	const cartItems = useStore((state) => state.cartItems); // Access cartItems state
 	return (
 		<header>
 			<nav>
@@ -17,6 +20,7 @@ const Header: React.FC = () => {
 					</li>
 				</ul>
 			</nav>
+			<div>Cart: {cartItems} items</div> {/* Display cart items count */}
 		</header>
 	);
 };

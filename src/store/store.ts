@@ -1,17 +1,38 @@
 import { create } from "zustand";
 
-// Define the interface for your state
+interface Product {
+	id: number;
+	title: string;
+	description: string;
+	price: number;
+	image: string;
+}
+
 interface CartState {
 	cartItems: number;
+	products: Product[];
+	setProducts: (
+		newProducts: Product[] | ((products: Product[]) => Product[])
+	) => void;
+	fetchProductById: (id: string) => Product | undefined;
 	addToCart: () => void;
 	removeFromCart: () => void;
 }
 
-// Create the Zustand store with the CartState type
-const useStore = create<CartState>((set) => ({
-	cartItems: 0, // Initial state
-	addToCart: () => set((state) => ({ cartItems: state.cartItems + 1 })), // Action to add to cart
-	removeFromCart: () => set((state) => ({ cartItems: state.cartItems - 1 })), // Action to remove from cart
+const useStore = create<CartState>((set, get) => ({
+	cartItems: 0,
+	products: [],
+	setProducts: (newProducts) =>
+		set((state) => ({
+			products:
+				typeof newProducts === "function"
+					? newProducts(state.products)
+					: newProducts,
+		})),
+	fetchProductById: (id: string) =>
+		get().products.find((product) => product.id.toString() === id),
+	addToCart: () => set((state) => ({ cartItems: state.cartItems + 1 })),
+	removeFromCart: () => set((state) => ({ cartItems: state.cartItems - 1 })),
 }));
 
 export default useStore;

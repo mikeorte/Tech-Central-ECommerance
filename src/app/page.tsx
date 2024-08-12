@@ -1,27 +1,30 @@
-// src/app/page.tsx
 "use client";
-
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import ProductCard from "./components/ProductCard";
+import useStore from "../store/store"; // Import the Zustand store
+import axios from "axios";
 
 export default function Home() {
-	const featuredProducts = [
-		{
-			name: "Smartphone 12X",
-			description:
-				"Experience the latest technology with the new Smartphone 12X.",
-			price: 999.99,
-			image: "https://via.placeholder.com/300x200?text=Smartphone+12X", // Placeholder image with text
-		},
-		{
-			name: "Wireless Headphones",
-			description:
-				"High-fidelity sound and noise-cancellation for the modern audiophile.",
-			price: 199.99,
-			image: "https://via.placeholder.com/300x200?text=Wireless+Headphones", // Placeholder image with text
-		},
-	];
+	const { products, setProducts } = useStore((state) => ({
+		products: state.products,
+		setProducts: state.setProducts,
+	}));
+
+	useEffect(() => {
+		const fetchProducts = async () => {
+			try {
+				const response = await axios.get(
+					"https://fakestoreapi.com/products/category/electronics"
+				);
+				setProducts(response.data);
+			} catch (error) {
+				console.error("Error fetching electronics products:", error);
+			}
+		};
+
+		fetchProducts();
+	}, [setProducts]);
 
 	return (
 		<div>
@@ -38,8 +41,15 @@ export default function Home() {
 			<section className="featured-products-section">
 				<h2>Featured Products</h2>
 				<div className="products-list">
-					{featuredProducts.map((product, index) => (
-						<ProductCard key={index} {...product} />
+					{products.slice(0, 4).map((product, index) => (
+						<ProductCard
+							key={index}
+							id={product.id.toString()}
+							name={product.title} // Transforming title to name
+							description={product.description}
+							price={product.price}
+							image={product.image}
+						/>
 					))}
 				</div>
 			</section>

@@ -1,10 +1,9 @@
 import React from "react";
-import "../../styles/components.css";
 
 const Footer: React.FC = () => {
 	return (
 		<footer>
-			<p>© 2024 Your Company Name. All rights reserved.</p>
+			<p>© 2024 Tech-Central. All rights reserved.</p>
 			<nav>
 				<ul>
 					<li>

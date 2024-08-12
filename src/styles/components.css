@@ -1,45 +1,96 @@
-header {
-	background-color: #333;
-	color: #fff;
-	padding: 0.5rem;
-	text-align: center;
-}
-nav ul {
-	list-style: none;
-	padding: 0;
-}
-nav ul li {
-	display: inline;
-	margin: 0 1rem;
-}
-nav ul li a {
-	color: #fff;
-	text-decoration: none;
+/* Define CSS Variables */
+:root {
+	--primary-color: #0070f3; /* Primary color: Blue */
+	--secondary-color: #ff6347; /* Secondary color: Orange */
+	--text-color: #333; /* Text color */
+	--background-color: #f5f5f5; /* Background color */
+	--footer-background-color: #333; /* Footer background color */
+	--link-color: blue; /* Link color */
 }
 
-footer {
-	background-color: #333;
-	color: #fff;
-	text-align: center;
-	padding: 0.5rem;
-	position: fixed;
-	bottom: 0;
-	width: 100%;
+/* General Body Styles */
+body {
+	font-family: "Open Sans", sans-serif;
+	background-color: var(--background-color);
+	color: var(--text-color);
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
+
+/* Content Wrapper to Push Footer Down */
+#content-wrapper {
+	flex: 1;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+	font-family: "Montserrat", sans-serif;
+	color: var(--text-color);
+}
+
+/* Header Styles */
+header {
+	background-color: var(--primary-color);
+	color: #fff;
+	padding: 0.5rem;
+	text-align: center;
+}
+
 nav ul {
 	list-style: none;
 	padding: 0;
 	display: flex;
 	justify-content: center;
 }
+
 nav ul li {
+	display: inline;
 	margin: 0 1rem;
 }
+
 nav ul li a {
 	color: #fff;
 	text-decoration: none;
 }
 
+nav ul li a:hover {
+	color: var(--secondary-color);
+}
+
+/* Footer Styles */
+footer {
+	background-color: var(--footer-background-color);
+	color: #fff;
+	text-align: center;
+	padding: 0.5rem;
+	width: 100%;
+}
+
+footer nav ul {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+}
+
+footer nav ul li {
+	margin: 0 1rem;
+}
+
+footer nav ul li a {
+	color: #fff;
+	text-decoration: none;
+}
+
+footer nav ul li a:hover {
+	color: var(--secondary-color);
+}
+
+/* Product Card Styles */
 .product-card {
 	border: 1px solid #ccc;
 	padding: 1rem;
@@ -47,16 +98,93 @@ nav ul li a {
 	text-align: center;
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	transition: box-shadow 0.3s ease-in-out;
 }
+
+.product-card:hover {
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
 .product-card img {
 	max-width: 100%;
 	height: auto;
 	border-radius: 8px;
 }
+
 .product-card h3 {
 	margin: 0.5rem 0;
 }
+
 .product-card p {
 	margin: 0.5rem 0;
-	color: #333;
+	color: var(--text-color);
+}
+
+/* Home Page Welcome Section */
+.welcome-section {
+	text-align: center;
+	padding: 2rem 0;
+}
+
+.welcome-section h1 {
+	font-size: 2.5rem;
+	margin-bottom: 1rem;
+}
+
+.welcome-section p {
+	font-size: 1.2rem;
+	margin-bottom: 1.5rem;
+}
+
+.welcome-section button {
+	padding: 1rem 2rem;
+	font-size: 1rem;
+	background-color: var(--primary-color);
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.welcome-section button:hover {
+	background-color: var(--secondary-color);
+}
+
+/* Featured Products Section */
+.featured-products-section {
+	padding: 2rem 0;
+}
+
+.featured-products-section h2 {
+	font-size: 2rem;
+	margin-bottom: 1.5rem;
+}
+
+.featured-products-section .products-list {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+/* About Us Section */
+.about-section {
+	padding: 2rem 0;
+	background-color: #f9f9f9;
+}
+
+.about-section h2 {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+
+.about-section p {
+	font-size: 1.1rem;
+	margin-bottom: 1rem;
+}
+
+.about-section a {
+	color: var(--link-color);
+	text-decoration: underline;
+	font-size: 1.1rem;
 }

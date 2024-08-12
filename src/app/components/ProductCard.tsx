@@ -1,9 +1,11 @@
+// src/app/components/ProductCard.tsx
 "use client";
+
 import React from "react";
-import "../../styles/components.css";
-import useStore from "../../store/store";
+import Link from "next/link";
 
 type ProductProps = {
+	id?: string;
 	name: string;
 	description: string;
 	price: number;
@@ -11,21 +13,19 @@ type ProductProps = {
 };
 
 const ProductCard: React.FC<ProductProps> = ({
+	id,
 	name,
 	description,
 	price,
 	image,
 }) => {
-	const addToCart = useStore((state) => state.addToCart); // Access addToCart action
-
 	return (
 		<div className="product-card">
 			<img src={image} alt={name} />
 			<h3>{name}</h3>
 			<p>{description}</p>
 			<p>${price.toFixed(2)}</p>
-			<button onClick={addToCart}>Add to Cart</button>{" "}
-			{/* Add to cart on click */}
+			{id && <Link href={`/product/${id}`}>View Details</Link>}
 		</div>
 	);
 };
